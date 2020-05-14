@@ -21,3 +21,11 @@ unused/Kifu.py
 unused/Mylib2.py
 unused/testboard2.py
 unused/Usi.py
+__pycache__/config.cpython-36.pyc
+common/__pycache__/board.cpython-36.pyc
+common/__pycache__/imgset.cpython-36.pyc
+iolib/__pycache__/nonblocking.cpython-36.pyc
+iolib/__pycache__/usi.cpython-36.pyc
+iolib/__pycache__/inoutlib.cpython-36.pyc
+common/__pycache__/vec2d.cpython-36.pyc
+common/__pycache__/infoparser.cpython-36.pyc
