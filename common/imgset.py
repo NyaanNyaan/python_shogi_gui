@@ -17,7 +17,7 @@ def imgsplit(im, num):
 
 
 def komaimgset():
-    im = Image.open('.\\common\\koma.gif')
+    im = Image.open('./common/koma.gif')
     komaimg = {}
     komaimg['K'] = imgsplit(im, 8)
     komaimg['R'] = imgsplit(im, 1)
