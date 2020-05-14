@@ -30,3 +30,6 @@ SENTEMOCHI_POS = Vec([918, 280]) * CHANGE_SCALE
 GOTEMOCHI_POS = Vec([10, 20]) * CHANGE_SCALE
 MOCHI_LABEL_X = int(30 * CHANGE_SCALE)
 MOCHI_TEXT_SIZE = int(20 * CHANGE_SCALE)
+
+# koma image
+image_filename = './common/koma.gif'

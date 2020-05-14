@@ -1,6 +1,7 @@
 from PIL import Image
 import os
 import sys
+from config import image_filename
 
 
 def imgsplit(im, num):
@@ -17,7 +18,7 @@ def imgsplit(im, num):
 
 
 def komaimgset():
-    im = Image.open('./common/koma.gif')
+    im = Image.open(image_filename)
     komaimg = {}
     komaimg['K'] = imgsplit(im, 8)
     komaimg['R'] = imgsplit(im, 1)
