@@ -28,7 +28,7 @@ class UsiWrapper:
         start = time.time()
         while True:
             if time.time() - start > 10.0:
-                raise RuntimeError("Unreceived : " + str_recv)
+                raise RuntimeError('Unreceived : ' + str_recv)
             buf = self.receive()
             if buf == None:
                 time.sleep(0.01)
@@ -37,29 +37,29 @@ class UsiWrapper:
 
     # initialize engine
     def init(self):
-        self.verify("usi", "usiok")
+        self.verify('usi', 'usiok')
         for line in self.setoption:
             self.send(line)
             time.sleep(0.01)
-        self.verify("isready", "readyok")
-        self.send("usinewgame")
+        self.verify('isready', 'readyok')
+        self.send('usinewgame')
 
     # start engine
     def go(self, sfen=None):
         if sfen != None:
-            self.send("position sfen " + sfen)
-        self.send("go infinite")
+            self.send('position sfen ' + sfen)
+        self.send('go infinite')
 
     # stop engine
     def stop(self):
-        self.send("stop")
+        self.send('stop')
 
     # kill engine
     def kill(self):
         self.exec.kill()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     from config import soft_name, soft_dir, setoption
     exe = UsiWrapper(soft_name, soft_dir, setoption)
     exe.go()

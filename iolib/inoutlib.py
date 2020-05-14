@@ -22,14 +22,14 @@ class Exec:
     def send(self, massage):
         self.p.stdin.write((massage + '\n').encode())
         self.p.stdin.flush()
-        print("send : " + massage)
+        print('send : ' + massage)
 
     def receive(self):
         output = self.nbsr.readline()
         if not output:
             return None
         else:
-            print("receive : " + output.decode(), end='')
+            print('receive : ' + output.decode(), end='')
             return output.decode()
 
     def receive_lines(self):
@@ -45,8 +45,8 @@ class Exec:
         self.p.kill()
 
 
-if __name__ == "__main__":
-    cmd = [".\\a.out"]
+if __name__ == '__main__':
+    cmd = ['.\\a.out']
     print(cmd)
     exe = Exec(cmd)
     while True:
@@ -59,7 +59,7 @@ if __name__ == "__main__":
                 sleep(0.1)
                 continue
         s = input()
-        if(s == "kill"):
+        if(s == 'kill'):
             exe.kill()
             break
         exe.send(s)

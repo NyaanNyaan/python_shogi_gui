@@ -1,23 +1,23 @@
 import shogi
 
 piece_to_char = {
-    "p": "歩", "l": "香", "n": "桂", "s": "銀", "g": "金", "b": "角", "r": "飛", "k": "玉", "+p": "と", "+l": "成香", "+n": "成桂", "+s": "成銀", "+b": "馬", "+r": "竜"
+    'p': '歩', 'l': '香', 'n': '桂', 's': '銀', 'g': '金', 'b': '角', 'r': '飛', 'k': '玉', '+p': 'と', '+l': '成香', '+n': '成桂', '+s': '成銀', '+b': '馬', '+r': '竜'
 }
 alphabet_to_num = {
-    "a": "1", "b": "2", "c": "3", "d": "4", "e": "5", "f": "6", "g": "7", "h": "8", "i": "9"
+    'a': '1', 'b': '2', 'c': '3', 'd': '4', 'e': '5', 'f': '6', 'g': '7', 'h': '8', 'i': '9'
 }
 
 
 def usi_to_csa(te, board):
-    s = "▲" if board.turn == 0 else "△"
+    s = '▲' if board.turn == 0 else '△'
     if(te == 'resign'):
-        s += "投了"
+        s += '投了'
     elif(te == 'rep_draw'):
-        s += "千日手"
-    elif(te[0:3] == "rep"):
+        s += '千日手'
+    elif(te[0:3] == 'rep'):
         s += te
     else:
-        if(te[1] == "*"):
+        if(te[1] == '*'):
             s += te[2] + alphabet_to_num[te[3]]
             s += piece_to_char[te[0].lower()]
         else:
@@ -26,12 +26,12 @@ def usi_to_csa(te, board):
                 9 - int(te[0]) + (int(alphabet_to_num[te[1]]) - 1) * 9)
             if(koma != None):
                 s += piece_to_char[koma.symbol().lower()]
-        if(len(te) == 5 and te[4] == "+"):
-            s += "成"
+        if(len(te) == 5 and te[4] == '+'):
+            s += '成'
         if(te[1] == '*'):
-            s += "打"
+            s += '打'
         else:
-            s += "(" + te[0] + alphabet_to_num[te[1]] + ")"
+            s += '(' + te[0] + alphabet_to_num[te[1]] + ')'
     return s
 
 
@@ -83,20 +83,20 @@ def info_parser(line, sfen=None):
         time // 3600000, (time % 60000) // 1000, (time % 1000) // 10)
     msg += ' 評価値: ' + score
     if(-300 < int(score) < 300):
-        msg += "(互角)"
+        msg += '(互角)'
     elif (300 <= int(score) <= 699):
-        msg += "(先手有利)"
+        msg += '(先手有利)'
     elif (700 <= int(score) <= 1499):
-        msg += "(先手優勢)"
+        msg += '(先手優勢)'
     elif (1500 <= int(score)):
-        msg += "(先手勝勢)"
+        msg += '(先手勝勢)'
     elif (-300 >= int(score) >= -699):
-        msg += "(後手有利)"
+        msg += '(後手有利)'
     elif (-700 >= int(score) >= -1499):
-        msg += "(後手優勢)"
+        msg += '(後手優勢)'
     elif (-1500 >= int(score)):
-        msg += "(後手勝勢)"
-    msg += " 局面数: " + nodes + ' NPS: ' + nps
+        msg += '(後手勝勢)'
+    msg += ' 局面数: ' + nodes + ' NPS: ' + nps
     
     for i in range(len(kifu)):
         if(i % 6 == 0):

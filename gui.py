@@ -13,7 +13,7 @@ from config import *
 class BoardDisplay(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master, width=GUI_SIZE[0], height=GUI_SIZE[1])
-        self.master.title("Shogi Board")
+        self.master.title('Shogi Board')
         self.pack()
 
         self.board = board.ShogiBoard(master=self)
@@ -39,8 +39,8 @@ class BoardDisplay(tk.Frame):
         )
         self.buttonKill.place(x=KILL_POS[0], y=KILL_POS[1])
 
-        self.InfoBox = tk.Text(font=("", 15))
-        self.InfoBox.mark_set(tk.INSERT, "1.0")
+        self.InfoBox = tk.Text(font=('', 15))
+        self.InfoBox.mark_set(tk.INSERT, '1.0')
         self.InfoBox.mark_gravity(tk.INSERT, tk.LEFT)
         self.InfoBox.place(
             x=INFO_POS[0], y=INFO_POS[1], width=INFO_SIZE[0], height=INFO_SIZE[1])
@@ -49,7 +49,7 @@ class BoardDisplay(tk.Frame):
         try:
             last_move = self.board.board.pop()
             self.board.komaDelete()
-            print("Undo : " + last_move.usi())
+            print('Undo : ' + last_move.usi())
             self.board.komaDisplay()
         except IndexError:
             pass
@@ -82,7 +82,7 @@ class BoardDisplay(tk.Frame):
             return
         self.exe.kill()
         self.exe = None
-        print("Terminated Exec")
+        print('Terminated Exec')
         time.sleep(0.01)
 
 

@@ -1,14 +1,14 @@
 # ソフトのパス
-soft_name = "./YaneuraOu-by-gcc"
+soft_name = './YaneuraOu-by-gcc'
 # ソフトの置かれているディレクトリ
-soft_dir = "./"
+soft_dir = './'
 # オプション
 setoption = [
-    "setoption name EvalDir value eval",
-    "setoption name BookFile value no_book",
-    "setoption name Threads value 2",
-    "setoption name Hash value 1024",
-    "setoption name ConsiderationMode value true"
+    'setoption name EvalDir value eval',
+    'setoption name BookFile value no_book',
+    'setoption name Threads value 2',
+    'setoption name Hash value 1024',
+    'setoption name ConsiderationMode value true'
 ]
 
 from common.vec2d import Vec

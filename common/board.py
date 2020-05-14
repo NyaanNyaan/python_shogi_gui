@@ -40,7 +40,7 @@ class ShogiBoard(tk.Canvas):
             cy = val % 100
             return GOTEMOCHI_POS + [0, cy * KOMA_SIZE[1]]
         else:
-            raise ValueError("ValueToVector(): incorrect value")
+            raise ValueError('ValueToVector(): incorrect value')
 
     def piece(self, x, y):
         koma = self.board.piece_at(9 - x + (y - 1) * 9)
@@ -51,12 +51,12 @@ class ShogiBoard(tk.Canvas):
     # 手番　先手番 0 後手番 1
 
     def banDisplay(self):
-        BAN_COLOR = "#F9C270"
+        BAN_COLOR = '#F9C270'
         self.create_rectangle(
             BANMEN_POS - [10, 10],
             BANMEN_POS + KOMA_SIZE * 9 + [10, 10],
             fill=BAN_COLOR, width=0,
-            tag="Board"
+            tag='Board'
         )
         self.create_rectangle(
             SENTEMOCHI_POS,
@@ -68,7 +68,7 @@ class ShogiBoard(tk.Canvas):
             GOTEMOCHI_POS + [KOMA_SIZE[0] + MOCHI_LABEL_X, KOMA_SIZE[1] * 7],
             fill=BAN_COLOR, width=0
         )
-        self.tag_bind("Board", "<Button-1>", self.clickBan)
+        self.tag_bind('Board', '<Button-1>', self.clickBan)
 
         for i in range(10):
             self.create_line(
@@ -95,7 +95,7 @@ class ShogiBoard(tk.Canvas):
                         *([(9 - i) * KOMA_SIZE[0], (j - 1)
                            * KOMA_SIZE[1]] + BANMEN_POS),
                         image=self.img[i][j],
-                        tag="koma",
+                        tag='koma',
                         anchor=tk.NW
                     )
         list_Mochi = [
@@ -113,14 +113,14 @@ class ShogiBoard(tk.Canvas):
                 self.create_image(
                     *(SENTEMOCHI_POS + [0, (6 - i) * KOMA_SIZE[1]]),
                     image=self.senteImg[i],
-                    tag="smochi",
+                    tag='smochi',
                     anchor=tk.NW
                 )
                 self.create_text(
                     *(SENTEMOCHI_POS + [KOMA_SIZE[0], (6 - i)
                                         * KOMA_SIZE[1] + MOCHI_TEXT_SIZE]),
                     text=' x' + str(count),
-                    tag="smochi"
+                    tag='smochi'
                 )
 
         # 後手の持駒
@@ -134,28 +134,28 @@ class ShogiBoard(tk.Canvas):
                 self.create_image(
                     *(GOTEMOCHI_POS + [0, i * KOMA_SIZE[1]]),
                     image=self.goteImg[i],
-                    tag="gmochi",
+                    tag='gmochi',
                     anchor=tk.NW
                 )
                 self.create_text(
                     *(GOTEMOCHI_POS + [KOMA_SIZE[0], (i + 1)
                                        * KOMA_SIZE[1] - MOCHI_TEXT_SIZE]),
                     text=' x' + str(count),
-                    tag="gmochi"
+                    tag='gmochi'
                 )
 
         # 紐づけ
-        self.tag_bind("koma", "<Button-1>", self.clickBan)
-        self.tag_bind("smochi", "<Button-1>", self.clickSmochi)
-        self.tag_bind("gmochi", "<Button-1>", self.clickGmochi)
+        self.tag_bind('koma', '<Button-1>', self.clickBan)
+        self.tag_bind('smochi', '<Button-1>', self.clickSmochi)
+        self.tag_bind('gmochi', '<Button-1>', self.clickGmochi)
 
     def komaDelete(self):
-        self.delete("koma")
-        self.delete("smochi")
-        self.delete("gmochi")
-        self.delete("selection")
-        self.delete("Nari")
-        self.delete("Nama")
+        self.delete('koma')
+        self.delete('smochi')
+        self.delete('gmochi')
+        self.delete('selection')
+        self.delete('Nari')
+        self.delete('Nama')
 
     def clickBan(self, event):
         cx, cy = self.canvasx(event.x), self.canvasy(event.y)
@@ -184,8 +184,8 @@ class ShogiBoard(tk.Canvas):
         self.create_rectangle(
             koma_pos + [1, 1],
             koma_pos + KOMA_SIZE,
-            fill="#E60000", width=0,
-            tag="selection"
+            fill='#E60000', width=0,
+            tag='selection'
         )
         self.komaDisplay()
 
@@ -194,24 +194,24 @@ class ShogiBoard(tk.Canvas):
         self.create_rectangle(
             koma_pos + [1, 1],
             koma_pos + [int(KOMA_SIZE[0] / 2), KOMA_SIZE[1]],
-            fill="#FF0000", width=0,
-            tag="Nari"
+            fill='#FF0000', width=0,
+            tag='Nari'
         )
         self.create_rectangle(
             koma_pos + [int(KOMA_SIZE[0] / 2), 0],
             koma_pos + KOMA_SIZE,
-            fill="#000000", width=0,
-            tag="Nama"
+            fill='#000000', width=0,
+            tag='Nama'
         )
-        self.tag_bind("Nari", "<Button-1>", self.clickNari)
-        self.tag_bind("Nama", "<Button-1>", self.clickNama)
+        self.tag_bind('Nari', '<Button-1>', self.clickNari)
+        self.tag_bind('Nama', '<Button-1>', self.clickNama)
 
     def clickNari(self, event):
-        self.Value3 = "Nari"
+        self.Value3 = 'Nari'
         self.teInputbyGui()
 
     def clickNama(self, event):
-        self.Value3 = "Nama"
+        self.Value3 = 'Nama'
         self.teInputbyGui()
 
     def isKanari(self):
@@ -248,35 +248,35 @@ class ShogiBoard(tk.Canvas):
                 pass
             elif(val == self.Value1):
                 self.Value1 = None
-                self.delete("selection")
+                self.delete('selection')
             elif(val < 100):
                 self.Value2 = val
                 if self.isKanari() == True:
                     if not shogi.Move.from_usi(self.te_usi()) in self.board.legal_moves:
                         self.teInputbyGui()
                     else:
-                        self.Value3 == "Machi"
+                        self.Value3 == 'Machi'
                         self.create_narinama(val)
                 else:
                     self.teInputbyGui()
 
     def te_usi(self):
         list_Mochi = ['P', 'L', 'N', 'S', 'G', 'B', 'R']
-        retsu = "-abcdefghi"
-        ret = ""
+        retsu = '-abcdefghi'
+        ret = ''
         # 1,2文字目
         if(self.Value1 < 100):
             ret += str(self.Value1 // 10)
             ret += retsu[self.Value1 % 10]
         else:
             ret += list_Mochi[self.Value1 % 100]
-            ret += "*"
+            ret += '*'
         # 3,4文字目
         ret += str(self.Value2 // 10)
         ret += retsu[self.Value2 % 10]
         # 5文字目
-        if(self.Value3 == "Nari"):
-            ret += "+"
+        if(self.Value3 == 'Nari'):
+            ret += '+'
         print(ret)
         return ret
 
@@ -285,7 +285,7 @@ class ShogiBoard(tk.Canvas):
         if(shogi.Move.from_usi(te) in self.board.legal_moves):
             self.board.push_usi(te)
         else:
-            print("Illegal Move")
+            print('Illegal Move')
         self.Value1 = None
         self.Value2 = None
         self.Value3 = None
