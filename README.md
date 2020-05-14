@@ -1,4 +1,6 @@
 
+![demo](https://user-images.githubusercontent.com/50105514/81907526-dcfeab80-9602-11ea-8c8b-eb21e79de845.gif)
+
 # 導入方法
 OSはLinux、Python3はインストールされているとする。
 
